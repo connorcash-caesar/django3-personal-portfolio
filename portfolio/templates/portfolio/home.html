@@ -1,0 +1,37 @@
+{% extends 'portfolio/base.html' %}
+
+{% block content %}
+
+
+{% load static %}
+<div class="row justify-content-center my-3">
+    <div class="col-5">
+        <img src="{% static 'portfolio/ESG_Made.png' %}" class="img-fluid">
+    </div>
+</div>
+
+<div class="row justify-content-center mb-3">
+    <div class="col-md-9 text-center">
+        <h1 class="font-weight-bold">Connor is the founder of Caesar Sustainability</h1>
+    </div>
+</div>
+
+<h2 class="mt-5">Portfolio</h2>
+<hr>
+
+<div class="row">
+    {% for project in projects %}
+    <div class="col-lg-4 col-md-6">
+
+        <img src="{{ project.image.url }}" class="img-fluid mb-2">
+        <div class="card-body">
+            <h5 class="card-title">{{ project.title }}</h5>
+            <p class="card-text">{{ project.description }}</p>
+            {% if project.url %}
+            <a href="{{ project.url }}" class="btn btn-primary">Link</a>
+            {% endif %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
